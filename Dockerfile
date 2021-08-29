@@ -25,6 +25,9 @@ RUN apt-get update && apt-get install -y libzip-dev && docker-php-ext-configure 
 # composer
 RUN curl https://getcomposer.org/installer --output /tmp/composer-setup.php && php /tmp/composer-setup.php --install-dir=/tmp && mv /tmp/composer.phar /usr/local/bin/composer
 
+# mysqli
+RUN docker-php-ext-configure mysqli && docker-php-ext-install mysqli
+
 # cleanup
 RUN rm -rf /var/lib/apt/lists/* /tmp/composer-setup.php
 
